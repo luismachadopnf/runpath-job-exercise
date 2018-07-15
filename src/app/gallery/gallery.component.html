@@ -1,0 +1,39 @@
+<div class="container gallery">
+  <app-spinner *ngIf="isLoading"></app-spinner>
+
+  <ng-container *ngIf="!isLoading">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="form-group">
+          <input type="text" class="form-control" (ngModelChange)="filterPhotos($event)" [(ngModel)]="userFilter" placeholder="Search">
+        </div>
+      </div>
+    </div>
+    
+    <br>
+
+    <div class="row justify-content-center">
+      <pagination-controls class="g-pagination" *ngIf="filteredPhotos.length >= 6" (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+    <br>
+
+    <div class="row justify-content-center" [@photosAnimation]>     
+      <div class="col-6 col-sm-4 col-lg-2" *ngFor="let photo of filteredPhotos | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+        <div class="card">
+          <img src="{{ photo.thumbnailUrl }}" class="card-img-top" alt="{{ photo.title }}">
+          <div class="card-body">{{ photo.title }}</div> 
+        </div>
+      </div>
+      
+    </div>
+
+    <br>
+
+    <div class="row justify-content-center">
+      <pagination-controls class="g-pagination" *ngIf="filteredPhotos.length !== 0" (pageChange)="p = $event"></pagination-controls>
+
+      <h5 *ngIf="filteredPhotos.length === 0">No photos found...</h5>
+    </div>
+  </ng-container>
+</div>

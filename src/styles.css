@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+.panel-bg-grey-lg {
+    min-height: 85.2vh;
+    background-color: whitesmoke;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

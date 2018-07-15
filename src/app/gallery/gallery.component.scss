@@ -1,0 +1,43 @@
+.gallery {
+    padding-top: 50px;
+
+    * {
+        border-radius: 0;
+    }
+    
+    input:focus {
+        border-color: #fff;
+        box-shadow: 0px 2px 10px 1px #ababab;
+    }
+
+    .card {
+        border: 0;
+        box-shadow: 0px 2px 10px 1px #ababab;
+        background-color: #ababab;
+        margin: 0 0 30px;
+
+        img {
+            border-radius: 0;
+        }
+
+        .card-body {
+            background-color: #fff;
+            padding: .15rem .4rem;
+            font-size: .9rem;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+    }
+
+    .g-pagination /deep/ {
+        .ngx-pagination {
+            padding: 0;
+
+            .current {
+                background: #717171;
+                font-weight: 500;
+            }
+        }
+    }
+}
