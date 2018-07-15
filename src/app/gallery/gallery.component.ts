@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { PhotoService } from '../../services/photo.service'
 import { Photo } from '../../models/photo'
-import {
-  trigger,
-  style,
-  animate,
-  transition,
-  stagger,
-  state,
-  query
-
-} from '@angular/animations'
+import { trigger, style, animate, transition, sequence } from '@angular/animations'
 
 @Component({
   selector: 'app-gallery',
@@ -18,18 +9,16 @@ import {
   styleUrls: ['./gallery.component.scss'],
   animations: [
     trigger('photosAnimation', [
-      transition(':enter', [
-        query('.card', style({ transform: 'translateX(-1000%)'})),
-        query('.card',
-          stagger('15ms', [
-            animate('100ms 100ms', style({ transform: 'translateX(0)'}))
-        ]))
+      transition('void => *', [
+        style({ opacity: '0.1' }),
+        sequence([
+        animate('.3s .5s ease-in', style({ opacity: '1' })),
+        ])
       ])
-    ])
+   ])
   ]
 })
 export class GalleryComponent implements OnInit {
-
 
   isLoading = true
   photos: Photo[]
