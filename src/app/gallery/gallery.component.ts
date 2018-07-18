@@ -26,6 +26,8 @@ export class GalleryComponent implements OnInit {
   userFilter = ''
   itemsPerPage = 18
 
+  p = 1
+
   constructor( private photoService: PhotoService ) { }
 
   ngOnInit() {
@@ -47,5 +49,7 @@ export class GalleryComponent implements OnInit {
     this.filteredPhotos = this.photos.filter(
       photo => photo.title.includes(event)
     )
+
+    this.p = 1
   }
 }
